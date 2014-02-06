@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="_1_4_gissa_det_hemliga_talet.Model.SecretNumber">
+    <Position X="0.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQACAUEAAAQAAAIAAAAAAIAAAgBAAAA=</HashCode>
+      <FileName>Model\SecretNumber.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="_1_4_gissa_det_hemliga_talet.Model.Outcome">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAgABAAAAAAAAgAJAAA=</HashCode>
+      <FileName>Model\SecretNumber.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
