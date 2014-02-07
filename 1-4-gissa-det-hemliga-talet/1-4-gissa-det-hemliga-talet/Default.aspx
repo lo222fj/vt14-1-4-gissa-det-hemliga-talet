@@ -37,7 +37,7 @@
             <%--Presentation av resultat--%>
             <asp:PlaceHolder ID="PlaceHolder1" runat="server">
                 <asp:Label ID="FormerGuessesLabel" runat="server" Text="50, 25, 37" />
-                <asp:Label ID="ResultLabel" runat="server" Text="Du vann" />
+                <asp:Label ID="ResultLabel" runat="server" Text="Du vann"></asp:Label>
             </asp:PlaceHolder>
         </div>
     </form>

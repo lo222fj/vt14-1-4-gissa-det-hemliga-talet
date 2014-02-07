@@ -27,7 +27,7 @@ namespace _1_4_gissa_det_hemliga_talet.Model
                 else
                     return false;
             }
-          }
+        }
         //Antal gissningar med aktuellt hemligt tal
         public int Count { get; private set; }
         //Ger eller sätter hemliga talet
@@ -48,7 +48,7 @@ namespace _1_4_gissa_det_hemliga_talet.Model
             {
                 if (value < 1 || value > 100)
                 {
-                    throw new ArgumentOutOfRangeException(); 
+                    throw new ArgumentOutOfRangeException();
                 }
                 else
                 {
@@ -59,11 +59,17 @@ namespace _1_4_gissa_det_hemliga_talet.Model
         //Resultatet av senaste gissningen
         public Outcome Outcome { get; private set; }
         //Referens till samling gissningar
-        public IEnumerable<int> PreviousGuesses { get; private set; }
+        public IEnumerable<int> PreviousGuesses
+        {
+            get
+            {
+                return _previousGuesses.AsReadOnly();
+            }
+        }
 
         public SecretNumber()
         {
-            List<int> _previousGuesses = new List<int>(7);
+            _previousGuesses = new List<int>(7);
             Initialize();
         }
         public void Initialize()
@@ -80,18 +86,20 @@ namespace _1_4_gissa_det_hemliga_talet.Model
         }
         public Outcome MakeGuess(int guess)
         {
-            if (guess < Number)
+            if (guess < _number)
             {
                 Outcome = Outcome.Low;
             }
-            else if (guess > Number)
+            else if (guess > _number)
             {
                 Outcome = Outcome.High;
             }
-            else if (guess == Number)
+            else if (guess == _number)
             {
                 Outcome = Outcome.Correct;
             }
+            _previousGuesses.Add(guess);
+            Count += 1;
             return Outcome;
         }
     }
