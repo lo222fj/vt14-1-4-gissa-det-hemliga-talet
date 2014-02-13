@@ -22,14 +22,19 @@ namespace _1_4_gissa_det_hemliga_talet.Model
         {
             get
             {
-                if (Count < 6)
+                if (Count < 7)
                     return true;
                 else
                     return false;
             }
         }
         //Antal gissningar med aktuellt hemligt tal
-        public int Count { get; private set; }
+        public int Count {
+            get
+            {
+                return PreviousGuesses.Count();
+            }
+        }
         //Ger eller sätter hemliga talet
         public int? Number
         {
@@ -44,17 +49,17 @@ namespace _1_4_gissa_det_hemliga_talet.Model
                     return _number;
                 }
             }
-            set
-            {
-                if (value < 1 || value > 100)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
-                else
-                {
-                    _number = value;
-                }
-            }
+            //set
+            //{
+            //    if (value < 1 || value > 100)
+            //    {
+            //        throw new ArgumentOutOfRangeException();
+            //    }
+            //    else
+            //    {
+            //        _number = value;
+            //    }
+            //}
         }
         //Resultatet av senaste gissningen
         public Outcome Outcome { get; private set; }
@@ -75,7 +80,7 @@ namespace _1_4_gissa_det_hemliga_talet.Model
         public void Initialize()
         {
             Random newRandom = new Random();
-            Number = newRandom.Next(1, 101);
+            _number = newRandom.Next(1, 101);
 
             if (_previousGuesses != null)
             {
@@ -86,9 +91,22 @@ namespace _1_4_gissa_det_hemliga_talet.Model
         }
         public Outcome MakeGuess(int guess)
         {
-            if (guess < _number)
+            if(guess <1 || guess>100)
             {
-                Outcome = Outcome.Low;
+                throw new ArgumentOutOfRangeException();
+            }
+
+            DecideOutcome(guess);
+            _previousGuesses.Add(guess);
+            //Count += 1;
+            return Outcome;
+        }
+
+        private void DecideOutcome(int guess)
+        {
+            if (PreviousGuesses.Contains(guess))
+            {
+                Outcome = Outcome.PreviousGuess;
             }
             else if (guess > _number)
             {
@@ -98,9 +116,10 @@ namespace _1_4_gissa_det_hemliga_talet.Model
             {
                 Outcome = Outcome.Correct;
             }
-            _previousGuesses.Add(guess);
-            Count += 1;
-            return Outcome;
+            else if (guess < _number)
+            {
+                Outcome = Outcome.Low;
+            }
         }
     }
 }

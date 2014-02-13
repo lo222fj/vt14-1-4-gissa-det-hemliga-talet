@@ -76,15 +76,6 @@ namespace _1_4_gissa_det_hemliga_talet {
         protected global::System.Web.UI.WebControls.Button SendGuessButton;
         
         /// <summary>
-        /// PlaceHolder1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolder1;
-        
-        /// <summary>
         /// FormerGuessesLabel control.
         /// </summary>
         /// <remarks>
@@ -101,5 +92,14 @@ namespace _1_4_gissa_det_hemliga_talet {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label ResultLabel;
+        
+        /// <summary>
+        /// NewSecretNrButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button NewSecretNrButton;
     }
 }

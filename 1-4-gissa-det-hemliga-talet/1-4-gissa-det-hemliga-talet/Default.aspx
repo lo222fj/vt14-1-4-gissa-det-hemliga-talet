@@ -9,17 +9,16 @@
     <script src="Content/script.js"></script>
 </head>
 <body>
-    <form id="form1" runat="server" >
+    <form id="form1" runat="server" defaultbutton="SendGuessButton" defaultfocus="GuessTextBox">
         <div id="main">
             <h1>Gissa det hemliga talet</h1>
             <div id="ValidationDiv">
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server"
                     CssClass="ErrorMessages" />
             </div>
-
             <asp:Label ID="Label1" runat="server" Text="Ange ett tal mellan 1 och 100: "></asp:Label>
             <%--Inputfält--%>
-            <asp:TextBox ID="GuessTextBox" runat="server" TextMode="SingleLine"></asp:TextBox>
+            <asp:TextBox ID="GuessTextBox" runat="server" TextMode="SingleLine" Enabled="True"></asp:TextBox>
             <%--Validering--%>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                 ErrorMessage="Ett tal måste anges." Text="*" Display="Dynamic"
@@ -30,15 +29,18 @@
                 MaximumValue="100" MinimumValue="1" Type="Integer"></asp:RangeValidator>
 
             <%--SkickaKnapp--%>
-            <p>
-                <asp:Button ID="SendGuessButton" runat="server" Text="Skicka gissning"
-                    OnClick="SendGuessButton_Click" />
-            </p>
+            <asp:Button ID="SendGuessButton" CssClass="button" runat="server" Text="Skicka gissning"
+                OnClick="SendGuessButton_Click" Enabled="True" />
+
             <%--Presentation av resultat--%>
-            <asp:PlaceHolder ID="PlaceHolder1" runat="server">
-                <asp:Label ID="FormerGuessesLabel" runat="server" Text="50, 25, 37" />
-                <asp:Label ID="ResultLabel" runat="server" Text="Du vann"></asp:Label>
-            </asp:PlaceHolder>
+           <div id="DisplayResult">
+                <asp:Label ID="FormerGuessesLabel" runat="server" Text="" />
+                <asp:Label ID="ResultLabel" runat="server" Text=""></asp:Label>
+            </div>
+            <p>
+                <asp:Button ID="NewSecretNrButton" CssClass="button" runat="server" 
+                    Text="Slumpa nytt hemligt tal" Visible="False" OnClick="NewSecretNrButton_Click" CausesValidation="False" />
+            </p>
         </div>
     </form>
 </body>
